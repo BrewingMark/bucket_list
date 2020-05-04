@@ -53,7 +53,13 @@ export default {
         .then(bucketList => this.bucketList = bucketList)
       },
       addToBucketList(){
-        this.bucketList.push(this.selectedCountry)
+        const newCountry = {
+          name: this.selectedCountry.name,
+          flag: this.selectedCountry.flag,
+          visited: false
+        };
+        BucketService.addToBucketList(newCountry)
+        .then(this.bucketList.push(newCountry))
       }
     }
 }
